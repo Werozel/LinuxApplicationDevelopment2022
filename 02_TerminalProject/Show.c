@@ -46,7 +46,7 @@ void render_window(WINDOW *win, const struct LinesInfo linesInfo, const int curr
     wmove(win, 1, 0);
 
     for (int i = currLine; i < LINES - 1 + currLine; i++) {
-        wprintw(win, "%.*s", COLS - 3, linesInfo.lines[i]);
+        wprintw(win, " %.*s", COLS - 3, linesInfo.lines[i]);
     }
 
     box(win, 0, 0);

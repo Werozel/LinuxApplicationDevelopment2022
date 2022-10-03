@@ -1,6 +1,6 @@
 
 build:
-	gcc -o Show -O2 Show.c
+	gcc Show.c -o Show -O2 -lcurses
 
 clean:
 	rm Show

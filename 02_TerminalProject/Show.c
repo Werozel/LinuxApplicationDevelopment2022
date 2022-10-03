@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <curses.h>
 
 
 #define MAX_LINES_COUNT 1000
@@ -36,6 +37,9 @@ struct LinesInfo read_lines_from_file(char* file_name) {
 }
 
 
+
+
+
 int main(int argc, char** argv) {
     if (argc < 2) {
         printf("No file to open!\n");
@@ -47,9 +51,20 @@ int main(int argc, char** argv) {
     char** lines = linesInfo.lines;
     int lines_c = linesInfo.lines_c;
 
+    initscr();
+    curs_set(0);
+
+    WINDOW *win = newwin(LINES, COLS, 0, 0);
+
     for (int i = 0; i < lines_c; i++) {
-        printf("%d: %s", i, lines[i]);
+        printw(lines[i]);
     }
+
+    wrefresh(win);
+
+    getch();
+    delwin(win);
+    endwin();
 
     for (int i = 0; i < lines_c; i++) {
         free(lines[i]);

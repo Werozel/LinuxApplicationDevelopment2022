@@ -13,7 +13,7 @@ struct LinesInfo {
 };
 
 
-struct LinesInfo read_lines_from_file(char* file_name) {
+struct LinesInfo read_lines_from_file(const char* file_name) {
     FILE* f = fopen(file_name, "r");
     if (f == NULL) {
         printf("Invalid file name\n");
@@ -37,7 +37,21 @@ struct LinesInfo read_lines_from_file(char* file_name) {
 }
 
 
+void render_window(WINDOW *win, const struct LinesInfo linesInfo, const int currLine) {
+    if (linesInfo.lines_c  - currLine < LINES - 1) {
+        return;
+    }
 
+    werase(win);
+    wmove(win, 1, 0);
+
+    for (int i = currLine; i < LINES - 1 + currLine; i++) {
+        wprintw(win, "%.*s", COLS - 3, linesInfo.lines[i]);
+    }
+
+    box(win, 0, 0);
+    wrefresh(win);
+}
 
 
 int main(int argc, char** argv) {
@@ -52,12 +66,30 @@ int main(int argc, char** argv) {
     int lines_c = linesInfo.lines_c;
 
     initscr();
-    curs_set(0);
+    printw(file_name);
 
-    WINDOW *win = newwin(LINES, COLS, 0, 0);
+    WINDOW *win = newwin(LINES - 1, COLS, 1, 0);
+    refresh();
 
-    for (int i = 0; i < lines_c; i++) {
-        printw(lines[i]);
+    keypad(win, TRUE);
+    scrollok (win, TRUE);
+
+    int currLine = 0;
+    render_window(win, linesInfo, currLine);
+    while (1) {
+        int exiting = 0;
+        switch (wgetch(win)) {
+            case 27: // ESC
+                exiting = 1;
+                break;
+            case 32: // Space
+                ++currLine;
+                render_window(win, linesInfo, currLine);
+                break;
+        }
+        if (exiting) {
+            break;
+        }
     }
 
     wrefresh(win);

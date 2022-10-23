@@ -32,9 +32,12 @@ int main(int argc, char** argv) {
     }
 
     for (int val = m, i = 0; val < n; i++, val += s) {
-        printf("%d ", val);
+        // printf("%d ", val);
+        if (28 <= i && i <= 35) {
+            printf("%d %d %d %d\n", m, n, s, val);
+        }
     }
-    printf("\n");
+    // printf("\n");
 
     return 0;
 }

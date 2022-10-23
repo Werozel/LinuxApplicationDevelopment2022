@@ -1,4 +1,6 @@
 set pagination off
+set logging overwrite
+set logging redirect
 set logging file ./second.log
 set logging on
 

@@ -4,7 +4,7 @@ TRASH = *.o *.log *.dSYM
 CC = cc
 
 build:
-	${CC} -O0 -g range.c -o GENERATES
+	${CC} -O0 -g range.c -o ${GENERATES}
 
 test-first:
 	gdb --batch --quiet -x first.gdb --args ./range.o 1 12

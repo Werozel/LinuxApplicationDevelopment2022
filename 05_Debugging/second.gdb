@@ -4,7 +4,7 @@ set logging redirect
 set logging file ./second.log
 set logging on
 
-b 35 if i <= 35 - 28
+b 35 if 28 <= i && i <= 35
 commands
     output {m, n, s, val}
     c

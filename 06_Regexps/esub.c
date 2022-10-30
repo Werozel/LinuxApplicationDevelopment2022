@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
     if (argc != 4) {
         printf("Wrong number of arguments\n");
         printf("Usage: esub <string> <pattern> <replacement>\n");
-        return 1;
+        return 0;
     }
 
     char* string = argv[1];
@@ -25,10 +25,10 @@ int main(int argc, char** argv) {
     if (result != 0) {
         char *error_text = calloc(MAX_ERROR_SIZE, sizeof(*error_text));
         regerror(result, &regex, error_text, MAX_ERROR_SIZE);
-        fprintf(stderr, "Error compiling regex: %s\n", error_text);
+        printf("Error compiling regex: %s\n", error_text);
         free(error_text);
         regfree(&regex);
-        return 1;
+        return 0;
     }
     // endregion
 
@@ -42,10 +42,10 @@ int main(int argc, char** argv) {
     } else if (result != 0) {
         char *error_text = calloc(MAX_ERROR_SIZE, sizeof(*error_text));
         regerror(result, &regex, error_text, MAX_ERROR_SIZE);
-        fprintf(stderr, "Error matching regex: %s\n", error_text);
+        printf("Error matching regex: %s\n", error_text);
         free(error_text);
         regfree(&regex);
-        return 1;
+        return 0;
     }
     // endregion
 

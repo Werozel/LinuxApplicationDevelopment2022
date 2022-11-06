@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
+#include <unistd.h>
 
 
 enum EXIT_CODES {
@@ -59,9 +59,10 @@ int main(int argc, char** argv) {
     // endregion
 
     // region copy file
-    int c;
-    while ((c = fgetc(first_file)) != EOF) {
-        if (fputc(c, second_file) == EOF) {
+    int *c = malloc(sizeof(int));
+    int second_fd = fileno(second_file);
+    while ((*c = fgetc(first_file)) != EOF) {
+        if (write(second_fd, c, 1) < 0) {
             clean(first_file, NULL, second_file, second_filename, ERROR_WRITING_TO_FILE);
         }
     }

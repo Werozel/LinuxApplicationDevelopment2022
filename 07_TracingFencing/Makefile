@@ -14,7 +14,8 @@ remove.so: remove.c
 	cc $(SO_FLAGS) $^ -o  $@ -ldl
 
 preload:
-	LD_PRELOAD=./remove.so ./move first.txt second.txt
+	echo "Hello world\nIt's me" > first.txt
+	LD_PRELOAD=`pwd`/remove.so ./move first.txt second.txt
 
 test-ok:
 	echo "Hello world\nIt's me" > first.txt

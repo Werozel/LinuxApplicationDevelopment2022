@@ -31,7 +31,7 @@ test-open-file:
 test-writing-to-file:
 	echo "Hello world\nIt's me" > first.txt
 	strace $(STRACE_FLAGS) -ewrite -efault=write:error=EPERM ./move first.txt second.txt $(EXTRACT_CODE) > test-writing-to-file.out
-	echo 2 > test-writing-to-file.expected
+	echo 3 > test-writing-to-file.expected
 	cmp test-writing-to-file.out test-writing-to-file.expected
 
 test-closing-file:

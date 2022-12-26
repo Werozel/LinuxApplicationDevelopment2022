@@ -3,6 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([Hasher program], [0.00], [khaibulaev.mn@gmail.com])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 
 AC_CONFIG_SRCDIR([rhasher.c])
 AC_CONFIG_HEADERS([config.h])

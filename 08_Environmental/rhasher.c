@@ -57,16 +57,13 @@ int main() {
             continue;
         }
 
-        int isFile = string[0] != '\"';
-        if (isFile) {
-            string++;
-        }
+        int isString = string[0] == '\"';
 
         int res;
-        if (isFile) {
+        if (!isString) {
             res = rhash_file(hashtype, string, res_bytes);
         } else {
-            res = rhash_msg(hashtype, string, strlen(string), res_bytes);
+            res = rhash_msg(hashtype, string + 1, strlen(string + 1), res_bytes);
         }
 
         if (res < 0) {

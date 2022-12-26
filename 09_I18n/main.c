@@ -1,6 +1,11 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include <libintl.h>
+#include <locale.h>
+
+#define _(STRING) gettext(STRING)
+
 
 int guess(int l, int r) {
     if (l == r) {
@@ -10,32 +15,37 @@ int guess(int l, int r) {
 
     int m = (l + r) / 2;
 
-    printf("Is your number greater than %d? (yes/no)\n", m);
+    printf("%s %d? (%s/%s)\n", _("Is your number greater than"), m, _("yes"), _("no"));
     char *line = NULL;
     size_t len = 0;
-    while (getline(&line, &len, stdin) > 0) {
-        if (strcmp(line, "yes\n") == 0) {
+    int read;
+    while ((read = getline(&line, &len, stdin)) > 0) {
+        line[read - 1] = '\0';
+        if (strcmp(line, _("yes")) == 0) {
             if (m == r) {
-                printf("Your number is %d\n", m);
+                printf("%s %d\n", _("Your number is"), m);
                 return 1;
             }
             return guess(m + 1, r) + 1;
-        } else if (strcmp(line, "no\n") == 0) {
+        } else if (strcmp(line, _("no")) == 0) {
             if (m == l) {
-                printf("Your number is %d\n", m);
+                printf("%s %d\n", _("Your number is"), m);
                 return 1;
             }
             return guess(l, m) + 1;
         } else {
-            printf("Invalid input, expected yes/no\n");
+            printf("%s %s/%s\n", _("Invalid input, expected"), _("yes"), _("no"));
         }
     }
 
-    printf("Error reading input\n");
+    printf("%s\n", _("Error reading input"));
     exit(1);
 }
 
 int main() {
+    setlocale(LC_ALL, "");
+    bindtextdomain("main", "..");
+    textdomain ("main");
 
     int number_of_guesses = guess(1, 100);
 

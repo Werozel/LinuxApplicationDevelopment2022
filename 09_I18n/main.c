@@ -44,7 +44,7 @@ int guess(int l, int r) {
 
 int main() {
     setlocale(LC_ALL, "");
-    bindtextdomain("main", "..");
+    bindtextdomain("main", ".");
     textdomain ("main");
 
     int number_of_guesses = guess(1, 100);

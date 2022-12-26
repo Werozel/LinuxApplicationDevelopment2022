@@ -56,7 +56,7 @@ int main() {
             continue;
         }
 
-        int isFile = string[0] == '\"';
+        int isFile = string[0] != '\"';
         if (isFile) {
             string++;
         }

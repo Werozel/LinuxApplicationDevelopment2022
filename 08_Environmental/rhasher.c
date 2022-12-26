@@ -5,6 +5,10 @@
 #include "ctype.h"
 #include "errno.h"
 
+#ifdef READLINE
+#include <readline/readline.h>
+#endif
+
 int main() {
     rhash_library_init();
 
@@ -16,7 +20,12 @@ int main() {
 
     char *hashtype_str = NULL;
     char *string = NULL;
+
+#ifdef READLINE
+    while ((line = readline(NULL))) {
+#else
     while ((getline(&line, &len, stdin)) != -1) {
+#endif
 
         hashtype_str = strtok(line, " ");
         string = strtok(strtok(NULL, " "), "\n");

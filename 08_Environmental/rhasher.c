@@ -75,9 +75,6 @@ int main() {
         printf("%s\n", res_str);
     }
 
-    free(line);
-    free(hashtype_str);
-    free(string);
     free(res_bytes);
     free(res_str);
     return 0;

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  09_I18n\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-26 19:55+0300\n"
-"PO-Revision-Date: 2022-12-26 19:55+0300\n"
+"POT-Creation-Date: 2022-12-26 22:25+0300\n"
+"PO-Revision-Date: 2022-12-26 22:25+0300\n"
 "Last-Translator: root <root@vmi1063708.contaboserver.net>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -46,3 +46,7 @@ msgstr "Не верный ввод, ожидалось"
 #: /root/Werozel/LinuxApplicationDevelopment2022/09_I18n/main.c:41
 msgid "Error reading input"
 msgstr "Ошибка чтения ввода"
+
+#: /root/Werozel/LinuxApplicationDevelopment2022/09_I18n/main.c:52
+msgid "Number of guesses"
+msgstr "Число попыток"

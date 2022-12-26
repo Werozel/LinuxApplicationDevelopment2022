@@ -44,12 +44,12 @@ int guess(int l, int r) {
 
 int main() {
     setlocale(LC_ALL, "");
-    bindtextdomain("main", ".");
+    bindtextdomain("main", getenv("PWD"));
     textdomain ("main");
 
     int number_of_guesses = guess(1, 100);
 
-    printf("guessed in %d guesses\n", number_of_guesses);
+    printf("%s %d\n", _("Number of guesses"),  number_of_guesses);
 
     return 0;
 }

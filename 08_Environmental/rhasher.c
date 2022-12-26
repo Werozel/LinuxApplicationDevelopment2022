@@ -4,6 +4,7 @@
 #include "rhash.h"
 #include "ctype.h"
 #include "errno.h"
+#include "config.h"
 
 #ifdef READLINE
 #include <readline/readline.h>

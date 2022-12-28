@@ -41,6 +41,7 @@ add_custom_target(run-en-roman DEPENDS main
         COMMAND LANGUAGE=en ${CMAKE_CURRENT_BINARY_DIR}/main -r
         )
 
+configure_file(${CMAKE_SOURCE_DIR}/main.c ${CMAKE_CURRENT_BINARY_DIR}/main.c COPYONLY)
 add_custom_target(doc
         COMMAND doxygen ${CMAKE_SOURCE_DIR}/Doxyfile.in
         )
@@ -51,3 +52,4 @@ add_custom_target(man DEPENDS main inject-translate
 
 #clean
 set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_SOURCE_DIR}/po/main.pot)
+set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/main.c)

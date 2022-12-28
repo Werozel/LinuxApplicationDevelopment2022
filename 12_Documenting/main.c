@@ -112,8 +112,17 @@ int main(int argc, const char *argv[]) {
         if (strcmp(argv[1], "-r") == 0) {
             isRoman = 1;
         } else if (strcmp(argv[1], "--help") == 0) {
-            printf("%s\n%s\n\t%s\n\t%s\n%s\n", _("A simple number guessing game"), _("Usage: main [-r, --help]"),
-                   _("-r - use roman numerals"), _("--help - show this help"), _("ru and en locales are available"));
+            printf(
+                    "%s\n%s\n\t%s\n\t%s\n%s\n",
+                    _("A simple number guessing game"),
+                    _("Usage: main [-r, --help]"),
+                    _("-r - use roman numerals"),
+                    _("--help - show this help"),
+                    _("ru and en locales are available")
+            );
+            return 0;
+        } else if (strcmp(argv[1], "--version") == 0) {
+            printf("%s\n", "1.0");
             return 0;
         }
     }

@@ -47,7 +47,7 @@ add_custom_target(doc
         )
 
 add_custom_target(man DEPENDS main inject-translate
-        COMMAND help2man --output=${CMAKE_BINARY_DIR}/main.l --name=${CMAKE_BINARY_DIR}/main ${CMAKE_BINARY_DIR}/main
+        COMMAND help2man --no-info --output=${CMAKE_CURRENT_BINARY_DIR}/main.man --name=number-guesser '${CMAKE_CURRENT_BINARY_DIR}/main'
         )
 
 #clean

@@ -41,10 +41,8 @@ add_custom_target(run-en-roman DEPENDS main
         COMMAND LANGUAGE=en ${CMAKE_CURRENT_BINARY_DIR}/main -r
         )
 
-configure_file(${CMAKE_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in)
-configure_file(${CMAKE_SOURCE_DIR}/main.c ${CMAKE_CURRENT_BINARY_DIR}/main.c)
 add_custom_target(doc
-        COMMAND doxygen ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in
+        COMMAND doxygen ${CMAKE_SOURCE_DIR}/Doxyfile.in
         )
 
 add_custom_target(man DEPENDS main inject-translate

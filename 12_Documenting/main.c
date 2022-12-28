@@ -45,9 +45,9 @@ const char* num_to_roman(int number) {
 
 /** A function to convert number to string. If isRoman is true, then it gives roman number.
  *
- * @param number
- * @param isRoman
- * @return
+ * @param number - a number to convert
+ * @param isRoman - if true, then it gives roman number
+ * @return - string with number
  */
 const char* num_to_str(int number, int isRoman) {
     if (isRoman) {

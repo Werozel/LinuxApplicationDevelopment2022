@@ -17,6 +17,11 @@ const char *roman[101] = { "N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"
                            "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"
 };
 
+/** A function to convert a roman number to an integer
+ *
+ * @param roman_num - roman number to convert
+ * @return - integer value of the roman number
+ */
 int roman_to_num(const char *roman_num) {
     for (int i = 0; i < 101; i++) {
         if (strcmp(roman_num, roman[i]) == 0) {
@@ -26,6 +31,11 @@ int roman_to_num(const char *roman_num) {
     return -1;
 }
 
+/** A function to convert an integer to a roman numeral.
+ *
+ * @param number - number to convert
+ * @return - string with roman numeral
+ */
 const char* num_to_roman(int number) {
     if (number < 1 || number > 100) {
         return _("Invalid number");
@@ -33,6 +43,12 @@ const char* num_to_roman(int number) {
     return roman[number];
 }
 
+/** A function to convert number to string. If isRoman is true, then it gives roman number.
+ *
+ * @param number
+ * @param isRoman
+ * @return
+ */
 const char* num_to_str(int number, int isRoman) {
     if (isRoman) {
         return num_to_roman(number);
@@ -42,7 +58,13 @@ const char* num_to_str(int number, int isRoman) {
         return num_str;
     }
 }
-
+/** A function that makes a guess between l and r borders
+ *
+ * @param l - left border
+ * @param r - right border
+ * @param isRoman - is guessing in roman numbers
+ * @return number of guesses
+ */
 int guess(int l, int r, int isRoman) {
     if (l == r) {
         const char *l_str = num_to_str(l, isRoman);

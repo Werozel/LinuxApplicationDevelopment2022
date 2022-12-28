@@ -16,4 +16,5 @@ add_executable(LinuxApplicationDevelopment2022
         06_Regexps/esub.c
         07_TracingFencing/move.c
         07_TracingFencing/remove.c
-        08_Environmental/rhasher.c)
+        08_Environmental/rhasher.c
+        12_Documenting/main.c)
